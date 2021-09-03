@@ -20,7 +20,7 @@ namespace YandexTests
     
         public void Dispose()
         {
-          //  InsDriver.Close();
+            InsDriver.Quit();
         }
     }
 }

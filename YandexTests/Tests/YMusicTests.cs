@@ -18,6 +18,8 @@ namespace YandexTests.Tests
 
         private readonly ITestOutputHelper output;
 
+       
+
         public YMusicTests(ITestOutputHelper output)
         {
             this.output = output;
@@ -59,9 +61,10 @@ namespace YandexTests.Tests
         {
             basePage.ButtonClick(mainPage.musicButtonOnMainPage);
             basePage.GoToFrame(1);
-            musicPage.ExecuteSearchRequestOnMusicPage("Morgen");
+            musicPage.ExecuteSearchRequestOnMusicPage("beyo");
             Thread.Sleep(1000);
             musicPage.CheckSongIsPlaying();  //Check the song is playing(play locator became pause locator)
+            Thread.Sleep(4000);
         }
 
         [Fact]
@@ -69,7 +72,7 @@ namespace YandexTests.Tests
         {
             basePage.ButtonClick(mainPage.musicButtonOnMainPage);
             basePage.GoToFrame(1);
-            musicPage.ExecuteSearchRequestOnMusicPage("Metallica");
+            musicPage.ExecuteSearchRequestOnMusicPage("beyo");
             Thread.Sleep(1000);
             musicPage.CheckSongIsPaused(); //Check the song is paused(paused locator became play locator)
         }

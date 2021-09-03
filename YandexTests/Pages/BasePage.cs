@@ -13,6 +13,14 @@ namespace YandexTests.Pages
         Waits waits = new Waits();
 
         IWebDriver InsDriver = DriverWrapper.GetInstance().CurrentDriver;
+
+       
+
+        public void Scroll()
+        {
+            IJavaScriptExecutor js = InsDriver as IJavaScriptExecutor;
+            js.ExecuteScript("window.scrollBy(0,950);");
+        }
         public string GetText(By locator)
         {
             return waits.ElementIsVisible(locator).Text;
