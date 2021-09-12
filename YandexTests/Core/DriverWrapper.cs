@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,8 @@ namespace YandexTests.Core
 {
     class DriverWrapper
     {
-        IWebDriver driver;
+        private IWebDriver driver;
+        string url = ConfigurationManager.AppSettings["URL"];
 
         private static readonly Lazy<DriverWrapper> lazy =
      new Lazy<DriverWrapper>(() => new DriverWrapper());
@@ -24,7 +26,7 @@ namespace YandexTests.Core
             {
                 driver = new ChromeDriver();
 
-                driver.Url = "https://yandex.ua/";
+                driver.Url = url;
 
                 driver.Manage().Window.Maximize();
             }
@@ -41,7 +43,7 @@ namespace YandexTests.Core
             return driver.Url;
         }
 
-        public void Close()
+        public void Quit()
         {
 
             if (driver == null)

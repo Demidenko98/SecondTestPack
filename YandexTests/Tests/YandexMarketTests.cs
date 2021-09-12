@@ -8,15 +8,16 @@ using Xunit;
 namespace YandexTests.Tests
 {
   
-    public class YandexMarketTests: IClassFixture<BaseTests>
+    public class YandexMarketTests: BaseTests
     {     
-        BasePage basePage = new BasePage();
-        MarketPage marketPage = new MarketPage();
-        MainPage mainPage = new MainPage();
+        
   
         [Fact]
         public void AddAndCompareTwoProduct()
         {
+            BasePage basePage = new BasePage();
+            MarketPage marketPage = new MarketPage();
+            MainPage mainPage = new MainPage();
             basePage.ButtonClick(mainPage.marketButtonOnMainPage);
             Thread.Sleep(3000); //Yandex estimates WebDriver as a robot and adds captcha checks, so I need to make tests a bit slower 
             basePage.GoToFrame(1);
@@ -30,6 +31,9 @@ namespace YandexTests.Tests
         [Fact]
         public void ProductsAreDeletedFromComparing()
         {
+            BasePage basePage = new BasePage();
+            MarketPage marketPage = new MarketPage();
+            MainPage mainPage = new MainPage();
             basePage.ButtonClick(mainPage.marketButtonOnMainPage);
             Thread.Sleep(3000);
             basePage.GoToFrame(1);
@@ -46,6 +50,9 @@ namespace YandexTests.Tests
         [Fact]
         public void CheckProductsAreSortedByPrice()
         {
+            BasePage basePage = new BasePage();
+            MarketPage marketPage = new MarketPage();
+            MainPage mainPage = new MainPage();
             basePage.ButtonClick(mainPage.marketButtonOnMainPage);
             Thread.Sleep(3000);
             basePage.GoToFrame(1);
@@ -57,6 +64,9 @@ namespace YandexTests.Tests
         [Fact]
         public void CheckProductsAreSortedByTag()
         {
+            BasePage basePage = new BasePage();
+            MarketPage marketPage = new MarketPage();
+            MainPage mainPage = new MainPage();
             basePage.ButtonClick(mainPage.marketButtonOnMainPage);
             Thread.Sleep(3000);
             basePage.GoToFrame(1);

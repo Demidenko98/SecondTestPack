@@ -21,7 +21,7 @@ namespace YandexTests.Core
             //fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
             //return fluentWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(locator));
 
-            WebDriverWait wait = new WebDriverWait(insDriver, TimeSpan.FromSeconds(15));
+            WebDriverWait wait = new WebDriverWait(insDriver, TimeSpan.FromSeconds(20));
             IWebElement searchResult = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(locator));
             return searchResult;
         }
@@ -29,7 +29,7 @@ namespace YandexTests.Core
         public IWebElement ElementIsClickable(By locator)
         {
             DefaultWait<IWebDriver> fluentWait = new DefaultWait<IWebDriver>(insDriver);
-            fluentWait.Timeout = TimeSpan.FromSeconds(10);
+            fluentWait.Timeout = TimeSpan.FromSeconds(20);
             fluentWait.PollingInterval = TimeSpan.FromMilliseconds(250);
             fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
             return fluentWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(locator));

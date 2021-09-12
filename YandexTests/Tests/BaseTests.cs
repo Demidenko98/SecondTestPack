@@ -10,7 +10,7 @@ namespace YandexTests
   
     public class BaseTests : IDisposable
     {
-        IWebDriver InsDriver = DriverWrapper.GetInstance().CurrentDriver;
+        DriverWrapper InsDriver = DriverWrapper.GetInstance();
 
         public BaseTests()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -7,30 +8,34 @@ using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 using YandexTests.Pages;
+using YandexTests.Core;
 
 namespace YandexTests.Tests
 {
-    public class YMusicTests: IClassFixture<BaseTests>
+    public class YMusicTests: BaseTests
     {
-        BasePage basePage = new BasePage();
-        MusicPage musicPage = new MusicPage();
-        MainPage mainPage = new MainPage();
-
-        private readonly ITestOutputHelper output;
-
        
 
-        public YMusicTests(ITestOutputHelper output)
-        {
-            this.output = output;
-        }
+        string metallicaSearch = Variables.metallicaSearch;
+            string beyonceSearch = Variables.beyonceSearch;
+
+
+        //    private readonly ITestOutputHelper output;
+
+        ////private YMusicTests(ITestOutputHelper output)
+        ////{
+        ////    this.output = output;
+        ////}
 
         [Fact]
         public void CheckMetallicaInPopularAlbums()
         {
+            BasePage basePage = new BasePage();
+            MusicPage musicPage = new MusicPage();
+            MainPage mainPage = new MainPage();
             basePage.ButtonClick(mainPage.musicButtonOnMainPage);
             basePage.GoToFrame(1);
-            musicPage.ExecuteSearchRequestOnMusicPage("Metallica");
+            musicPage.ExecuteSearchRequestOnMusicPage(metallicaSearch);
             Thread.Sleep(1000);  //Webdriver works too fast and some elements are shown, but with another values, so i need to wait some time the needed elements have correct values
             string[] ExpectedArtistsOfPopularAlbums = new string[8] 
             { "Metallica", "Metallica", 
@@ -48,9 +53,12 @@ namespace YandexTests.Tests
         [Fact]
         public void MetallicaIsArtirt()
         {
+            BasePage basePage = new BasePage();
+            MusicPage musicPage = new MusicPage();
+            MainPage mainPage = new MainPage();
             basePage.ButtonClick(mainPage.musicButtonOnMainPage);
             basePage.GoToFrame(1);
-            musicPage.ExecuteSearchRequestOnMusicPage("Metallica");
+            musicPage.ExecuteSearchRequestOnMusicPage(metallicaSearch);
             Thread.Sleep(1000);
             string actualArtistName = musicPage.GetArtistName();
             Assert.Equal("Metallica", actualArtistName);  //Checking actualArtistName is Metallica
@@ -59,9 +67,12 @@ namespace YandexTests.Tests
         [Fact]
         public void SongIsPlaying()
         {
+            BasePage basePage = new BasePage();
+            MusicPage musicPage = new MusicPage();
+            MainPage mainPage = new MainPage();
             basePage.ButtonClick(mainPage.musicButtonOnMainPage);
             basePage.GoToFrame(1);
-            musicPage.ExecuteSearchRequestOnMusicPage("beyo");
+            musicPage.ExecuteSearchRequestOnMusicPage(beyonceSearch);
             Thread.Sleep(1000);
             musicPage.CheckSongIsPlaying();  //Check the song is playing(play locator became pause locator)
             Thread.Sleep(4000);
@@ -70,9 +81,12 @@ namespace YandexTests.Tests
         [Fact]
         public void SongIsPaused()
         {
+            BasePage basePage = new BasePage();
+            MusicPage musicPage = new MusicPage();
+            MainPage mainPage = new MainPage(); 
             basePage.ButtonClick(mainPage.musicButtonOnMainPage);
             basePage.GoToFrame(1);
-            musicPage.ExecuteSearchRequestOnMusicPage("beyo");
+            musicPage.ExecuteSearchRequestOnMusicPage(beyonceSearch);
             Thread.Sleep(1000);
             musicPage.CheckSongIsPaused(); //Check the song is paused(paused locator became play locator)
         }
